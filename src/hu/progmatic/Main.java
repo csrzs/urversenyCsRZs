@@ -7,11 +7,8 @@ public class Main {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
     int menuValasztas;
-    String stringValasz = "";
-    String valasztottUrhajoTipus = "";
     Varos valasztottVaros;
 
-    Urhajo urhajo1 = new Urhajo(2250, "Űrgolyhó", 10, 20, 50);
     Varos varos1 = new Varos("Alfapolisz", 5);
     Varos varos2 = new Varos("Bétapolisz", 10);
 
@@ -29,6 +26,8 @@ public class Main {
     System.out.println("Viszont látásra!");
 
     /* ARCHIVÁLT KÓDRÉSZLETEK --------------------------------------------------------------------------------
+
+    Urhajo urhajo1 = new Urhajo(2250, "Űrgolyhó", 10, 20, 50);
 
     System.out.println(varos1.urhajoLista());
     System.out.println(varos2.urhajoLista());
@@ -58,7 +57,6 @@ public class Main {
   }
 
   private static int menupontValasztas(Scanner scanner, Varos valasztottVaros) {
-    String valasztottUrhajoTipus;
     int menuValasztas;
     System.out.println("Kérem válasszon a lehetséges menüpontok közül!");
     menuValasztas = scanner.nextInt();
@@ -71,8 +69,7 @@ public class Main {
         break;
       case 3:
         System.out.println("Adja meg a szűrni kívánt típust!");
-        valasztottUrhajoTipus = scanner.next();
-        System.out.println(valasztottVaros.tipusLista(valasztottUrhajoTipus));
+        System.out.println(valasztottVaros.tipusLista(scanner.next()));
         break;
       case 4:
         System.out.println(valasztottVaros.gyorshajtokLista());
@@ -85,7 +82,6 @@ public class Main {
 
   private static Varos varosValasztas(Scanner scanner, Varos varos1, Varos varos2) {
     Varos valasztottVaros;
-    String stringValasz;
     System.out.println("Elérhető városok listája:");
     System.out.println("=========================");
     System.out.println(varos1.getNev());
@@ -93,8 +89,7 @@ public class Main {
     System.out.println("=========================");
     System.out.println("Kérem adja meg melyik város nyilvántartó rendszerébe szeretne belépni!");
 
-    stringValasz = scanner.next();
-    switch (stringValasz) {
+    switch (scanner.next()) {
       case "Alfapolisz":
         valasztottVaros = varos1;
         break;
@@ -124,7 +119,7 @@ public class Main {
 
   public static void nUrhajoGeneralasa(int darabszam, Varos celVaros) {
     for (int i = 0; i < darabszam; i++) {
-      celVaros.setUrhajo(0 + i, new Urhajo(2250 + i, "Alfa-" + i, 10 + i, 20 + i, 50 + i, (int) (Math.random() * 2501)));
+      celVaros.setUrhajo(i, new Urhajo(2250 + i, "Alfa-" + i, 10 + i, 20 + i, 50 + i, (int) (Math.random() * 2501)));
     }
   }
 }
