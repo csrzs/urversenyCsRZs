@@ -68,7 +68,7 @@ public class Urhajo {
   }
 
   public void setAktualisSebesseg(int aktualisSebesseg) {
-    if (leszabalyozva || aktualisSebesseg > 2500) {
+    if (leszabalyozva && aktualisSebesseg > 2500) {
       throw new RuntimeException("Leszabályozva!");
     }
     this.aktualisSebesseg = aktualisSebesseg;
