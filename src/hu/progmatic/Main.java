@@ -19,7 +19,9 @@ public class Main {
     varos2.setUrhajo(1, null);
 
     do {
-      valasztottVaros = varosValasztas(scanner, varos1, varos2);
+      do {
+        valasztottVaros = varosValasztas(scanner, varos1, varos2);
+      } while (valasztottVaros == null);
       System.out.println(printMenu(valasztottVaros.getNev()));
       menuValasztas = menupontValasztas(scanner, valasztottVaros);
     } while (menuValasztas != 0);
@@ -97,7 +99,9 @@ public class Main {
         valasztottVaros = varos2;
         break;
       default:
-        throw new RuntimeException("Nem létező várost adott meg!");
+        System.out.println("Nem létező városnevet adott meg!");
+        System.out.println();
+        return null;
     }
     return valasztottVaros;
   }
